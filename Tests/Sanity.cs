@@ -1,17 +1,13 @@
-using Microsoft.AspNetCore.Mvc.Testing;
+namespace Tests;
 
-namespace Tests
+public class Sanity
 {
-    public class Sanity
+    [Fact]
+    public async Task CallTheEndpoint()
     {
-        [Fact]
-        public async Task CallTheEndpoint()
-        {
-            var app = new WebApplicationFactory<Program>();
-            var client = app.CreateClient();
+        var client = Factory.CreateHttpClient();
 
-            var response = await client.GetAsync("WeatherForecast");
-            response.EnsureSuccessStatusCode();
-        }
+        var response = await client.GetAsync("WeatherForecast");
+        response.EnsureSuccessStatusCode();
     }
 }
