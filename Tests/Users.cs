@@ -1,4 +1,6 @@
-﻿namespace Tests;
+﻿using System.Text;
+
+namespace Tests;
 
 public class Users
 {
@@ -23,7 +25,10 @@ public class Users
     ""email"": ""jake@jake.jake"",
     ""password"": ""jakejake""
   }
-}"));
+}", Encoding.UTF8, "application/json"));
+        
+        var result = await response.Content.ReadAsStringAsync();
         response.EnsureSuccessStatusCode();
+
     }
 }
